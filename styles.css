@@ -45,12 +45,13 @@ body {
 }
 
 .input {
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+  width: 100%;
   margin-bottom: 10px;
 }
 
 .input label {
+  padding-bottom: 30px;
   display: inline-block;
   max-width: 100%;
   margin-bottom: 3px;
@@ -60,7 +61,7 @@ body {
   font-weight: normal;
   line-height: 1.2rem;
 }
-
+/* 
 .input input {
   display: block;
   width: 100%;
@@ -74,6 +75,31 @@ body {
   background: #fff none;
   border: 1px solid #999;
   border-radius: 5px;
+} */
+
+.app__buttons{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.app__button{
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  font-weight: normal;
+  font-family: GothamPro, sans-serif;
+  font-size: 1rem;
+  line-height: 1.3rem;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background: #fad64e;
+  color: #3f3f3f;
+  border: none;
+  border-radius: 10px;
 }
 
 .game {

@@ -4,24 +4,25 @@ const $time = document.querySelector('#time')
 const $result = document.querySelector('#result')
 const $timeHeader = document.querySelector('#time-header')
 const $resultHeader = document.querySelector('#result-header')
-const $gameTime = document.querySelector('#game-time')
+const $input = document.querySelector('.input')
 
 const colors = ['red', 'green', 'green', 'pink', 'yellow']
 let score = 0
 let isGameStarted = false
 
+const setGameTimeButtons = document.querySelectorAll('.app__button')
+
 $start.addEventListener('click', startGame)
 $game.addEventListener('click', hendleBoxClick)
-$gameTime.addEventListener('input', setGameTime)
 
 function startGame() {
    score = 0
    setGameTime()
 
-   $gameTime.setAttribute('disabled', 'true')
    $game.style.backgroundColor = '#fff'
    $start.classList.add('hide')
    isGameStarted = true
+   $input.classList.add('hide')
 
    const interval = setInterval(() => {
       const time = parseFloat($time.textContent)
@@ -58,11 +59,22 @@ function renderBox() {
 }
 
 function setGameTime() {
-   let time = +$gameTime.value
+   let time = +$time.textContent
    $time.textContent = time.toFixed(1)
    $timeHeader.classList.remove('hide')
    $resultHeader.classList.add('hide')
 }
+
+
+setGameTimeButtons.forEach(button => {
+   button.addEventListener('click',() => 
+   {$time.textContent =`${button.dataset.value}`
+    $resultHeader.classList.add('hide')
+    $timeHeader.classList.remove('hide')
+   }
+   )
+})
+
 
 function hendleBoxClick(event) {
    if (!isGameStarted) {
@@ -84,10 +96,9 @@ function setGameScore() {
 }
 
 function endGame() {
-
-   $gameTime.removeAttribute('disabled')
    isGameStarted = false
    setGameScore()
+   $input.classList.remove('hide')
    $start.classList.remove('hide')
    $game.innerHTML = ''
    $game.style.backgroundColor = '#ccc'
